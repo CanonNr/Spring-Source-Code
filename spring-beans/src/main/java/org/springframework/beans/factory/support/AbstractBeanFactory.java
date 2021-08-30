@@ -306,13 +306,16 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 			String name, @Nullable Class<T> requiredType, @Nullable Object[] args, boolean typeCheckOnly)
 			throws BeansException {
 
-		/**
-		 * 提取对应的beanName，很多同学可能会认为此处直接使用即可，为什么还要进行转换呢，原因在于当bean对象实现FactoryBean接口之后就会变成&beanName，同时如果存在别名，也需要把别名进行转换*/
+		/*
+		 * 提取对应的beanName，很多同学可能会认为此处直接使用即可，为什么还要进行转换呢，
+		 * 原因在于当bean对象实现FactoryBean接口之后就会变成&beanName，同时如果存在别名，也需要把别名进行转换
+		 *
+		*/
 		String beanName = transformedBeanName(name);
 		Object bean;
 
 		// Eagerly check singleton cache for manually registered singletons.
-		/**提前检查单例缓存中是否有手动注册的单例对象，跟循环依赖有关联*/
+		/*提前检查单例缓存中是否有手动注册的单例对象，跟循环依赖有关联*/
 		Object sharedInstance = getSingleton(beanName);
 		// 如果bean的单例对象找到了，且没有创建bean实例时要使用的参数
 		if (sharedInstance != null && args == null) {

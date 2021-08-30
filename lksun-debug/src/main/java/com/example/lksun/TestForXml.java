@@ -10,8 +10,8 @@ public class TestForXml {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("Spring.xml");
         User user = (User) context.getBean("UserEntity");
-        user.setName("sun");
-        user.setAddress("beijing");
-        System.out.println(user);
+////        user.setName("sun");
+////        user.setAddress("beijing");
+//        System.out.println(user);
     }
 }

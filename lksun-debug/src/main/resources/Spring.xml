@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
     <!-- 两个类 -->
-    <bean id="UserEntity" class="com.example.lksun.entity.User"/>
+    <bean id="UserEntity" class="com.example.lksun.entity.User" init-method="test">
+        <property name="name" value="miaomiao"/>
+<!--        <property name="a" ref="a"/>-->
+    </bean>
+
+<!--    <bean id="a" class="com.example.lksun.entity.A">-->
+<!--        <property name="user" ref="UserEntity"/>-->
+<!--    </bean>-->
+
+
+    <bean id="DemoBeanPostProcessor" class="com.example.lksun.config.DemoBeanPostProcessor"/>
+    <bean id="MyBeanFactoryPostProcessor" class="com.example.lksun.config.MyBeanFactoryPostProcessor"/>
     <!-- 扫描Bean -->
-    <context:component-scan base-package="com.example"/>
+<!--    <context:component-scan base-package="com.example.lksun.entity"/>-->
 </beans>
